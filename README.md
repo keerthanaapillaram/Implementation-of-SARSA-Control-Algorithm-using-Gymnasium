@@ -21,40 +21,16 @@ Gymnasium
 
 
 ## Environment Description
+
 A customized 4×4 FrozenLake environment is used for the experiment.
-```
+
+The environment consists of safe frozen tiles (`F`), hole states (`H`), a starting state (`S`), and a goal state (`G`).
+
+```text
 F F H F
 F S F F
 H F F F
 F F H G
-```
-Where:
-
-S represents the starting state.
-G represents the goal state.
-F represents a safe frozen tile.
-H represents a hole.
-
-The starting state is state 5, and the goal state is state 15.
-
-The environment is created using:
-
-```python
-custom_map = [
-    "FFHF",
-    "FSFF",
-    "HFFF",
-    "FFHG"
-]
-
-env = gym.make(
-    "FrozenLake-v1",
-    desc=custom_map,
-    is_slippery=False
-)
-```
-
-The is_slippery=False setting makes the environment deterministic, so the agent's selected action produces the corresponding movement without random slipping.
 
 
 ## Theory
