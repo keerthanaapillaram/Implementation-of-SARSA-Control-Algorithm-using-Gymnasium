@@ -8,7 +8,7 @@ To implement the **SARSA control algorithm** using the Gymnasium `FrozenLake-v1`
 
 ## Problem Statement
 
-Implement the SARSA control algorithm in the Gymnasium FrozenLake-v1 environment. The agent must learn an optimal action-selection policy through interaction with the environment. For this experiment, a customized 4×4 FrozenLake map is used with a modified starting position and goal position. The agent learns to navigate from the starting state to the goal while avoiding hole states
+Implement the SARSA control algorithm in the Gymnasium FrozenLake-v1 environment. The agent must learn an effective action-selection policy through interaction with the environment. A customized 4×4 FrozenLake map is used with the starting position at state 5 and the goal position at state 15. The agent learns to navigate from the starting state to the goal while avoiding hole states.
 
 ## Software Requirements
 ```
@@ -31,7 +31,7 @@ F F H F
 F S F F
 H F F F
 F F H G
-
+```
 
 ## Theory
 
@@ -108,62 +108,6 @@ $$
 ## Python Program
 
 ```python
-import gymnasium as gym
-import numpy as np
-import matplotlib.pyplot as plt
-
-# -------------------------------------------------
-# Create Customized FrozenLake Environment
-# -------------------------------------------------
-
-custom_map = [
-    "FFHF",
-    "FSFF",
-    "HFFF",
-    "FFHG"
-]
-
-env = gym.make(
-    "FrozenLake-v1",
-    desc=custom_map,
-    is_slippery=False
-)
-
-# -------------------------------------------------
-# Hyperparameters
-# -------------------------------------------------
-
-num_episodes = 10000
-max_steps_per_episode = 100
-
-alpha = 0.1
-gamma = 0.99
-
-epsilon = 1.0
-epsilon_min = 0.05
-epsilon_decay = 0.9995
-
-# -------------------------------------------------
-# Initialize Q-table
-# -------------------------------------------------
-
-Q = np.zeros(
-    (env.observation_space.n,
-     env.action_space.n)
-)
-
-# -------------------------------------------------
-# Epsilon-Greedy Action Selection
-# -------------------------------------------------
-
-def epsilon_greedy_action(state, epsilon):
-
-    if np.random.random() < epsilon:
-        return env.action_space.sample()
-
-    return np.argmax(Q[state])
-
-
 # -------------------------------------------------
 # SARSA Training
 # -------------------------------------------------
@@ -218,96 +162,6 @@ for episode in range(num_episodes):
         action = next_action
 
     episode_rewards.append(total_reward)
-
-
-# -------------------------------------------------
-# State-Value Function
-# -------------------------------------------------
-
-state_values = np.max(Q, axis=1)
-
-# -------------------------------------------------
-# Learned Policy
-# -------------------------------------------------
-
-learned_policy = np.argmax(Q, axis=1)
-
-
-# -------------------------------------------------
-# Display Functions
-# -------------------------------------------------
-
-def print_value_function(values):
-
-    print("\nEstimated State-Value Function:")
-    print(np.round(values.reshape(4, 4), 3))
-
-
-def print_policy(policy):
-
-    action_symbols = {
-        0: "L",
-        1: "D",
-        2: "R",
-        3: "U"
-    }
-
-    policy_grid = np.array(
-        [action_symbols[action] for action in policy]
-    ).reshape(4, 4)
-
-    print("\nLearned Policy:")
-    print(policy_grid)
-
-
-# -------------------------------------------------
-# Output
-# -------------------------------------------------
-
-print("\nFinal Q-table:")
-print(np.round(Q, 3))
-
-print_value_function(state_values)
-
-print_policy(learned_policy)
-
-average_reward = np.mean(
-    episode_rewards[-1000:]
-)
-
-print(
-    "\nAverage reward over last 1000 episodes:",
-    average_reward
-)
-
-
-# -------------------------------------------------
-# Plot Learning Curve
-# -------------------------------------------------
-
-window = 500
-
-moving_average = np.convolve(
-    episode_rewards,
-    np.ones(window) / window,
-    mode="valid"
-)
-
-plt.figure(figsize=(8, 5))
-plt.plot(moving_average)
-
-plt.xlabel("Episode")
-plt.ylabel("Average Reward")
-plt.title("SARSA Learning Curve - Customized FrozenLake")
-
-plt.grid(True)
-plt.show()
-
-env.close()
-
-
-
-
 ```
 ---
 
@@ -338,10 +192,12 @@ Average reward over last 1000 episodes:
 
 ## Result
 
-The SARSA control algorithm was successfully implemented using the Gymnasium FrozenLake-v1 environment. A customized 4×4 environment was used by changing the starting position to state 5 and defining state 15 as the goal. Through repeated interaction with the environment, the agent learned an action-value function and an epsilon-greedy policy for navigating through the environment while avoiding hole states.
+The SARSA control algorithm was successfully implemented using the Gymnasium FrozenLake-v1 environment. The agent learned an action-value function and an epsilon-greedy policy for navigating from state 5 to the goal state 15 while avoiding the hole states. The learned Q-table and policy demonstrate the agent's ability to select suitable actions based on its experience.
 
 
 ## Inference
+
+The experiment shows that SARSA can learn an effective control policy through trial-and-error interaction with the environment. With a fixed epsilon, the exploration rate remains constant throughout training, whereas with epsilon decay, exploration is high initially and gradually decreases as training progresses. In this experiment, epsilon decay allows the agent to explore different actions in the beginning and increasingly exploit the learned Q-values later. This helps the agent learn a suitable path toward the goal while avoiding the holes in the customized FrozenLake environment.
 
 The experiment shows that SARSA can learn a control policy through trial-and-error interaction with the environment. Initially, the agent performs more exploration because epsilon is high. As training progresses, epsilon decreases and the agent increasingly uses the learned Q-values to select actions. The learned policy therefore improves its ability to navigate toward the goal while avoiding the holes in the customized FrozenLake environment.
 
