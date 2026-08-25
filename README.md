@@ -200,6 +200,4 @@ The SARSA control algorithm was successfully implemented using the Gymnasium Fro
 
 The experiment shows that SARSA can learn an effective control policy through trial-and-error interaction with the environment. With a fixed epsilon, the exploration rate remains constant throughout training, whereas with epsilon decay, exploration is high initially and gradually decreases as training progresses. In this experiment, epsilon decay allows the agent to explore different actions in the beginning and increasingly exploit the learned Q-values later. This helps the agent learn a suitable path toward the goal while avoiding the holes in the customized FrozenLake environment.
 
-The experiment shows that SARSA can learn a control policy through trial-and-error interaction with the environment. Initially, the agent performs more exploration because epsilon is high. As training progresses, epsilon decreases and the agent increasingly uses the learned Q-values to select actions. The learned policy therefore improves its ability to navigate toward the goal while avoiding the holes in the customized FrozenLake environment.
-
 
