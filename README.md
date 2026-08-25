@@ -39,6 +39,7 @@ The starting state is state 5, and the goal state is state 15.
 
 The environment is created using:
 
+```python
 custom_map = [
     "FFHF",
     "FSFF",
@@ -51,6 +52,7 @@ env = gym.make(
     desc=custom_map,
     is_slippery=False
 )
+```
 
 The is_slippery=False setting makes the environment deterministic, so the agent's selected action produces the corresponding movement without random slipping.
 
