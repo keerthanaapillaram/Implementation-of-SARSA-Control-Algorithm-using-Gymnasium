@@ -22,12 +22,12 @@ Gymnasium
 
 ## Environment Description
 A customized 4×4 FrozenLake environment is used for the experiment.
-
+```
 F F H F
 F S F F
 H F F F
 F F H G
-
+```
 Where:
 
 S represents the starting state.
@@ -335,12 +335,9 @@ env.close()
 
 ## Output
 
-```text
 Final Q-table:
 
 <img width="656" height="326" alt="image" src="https://github.com/user-attachments/assets/aa3e9872-f6cf-4f16-ad31-0445b127d18d" />
-
-
 
 
 Estimated State-Value Function:
@@ -348,10 +345,7 @@ Estimated State-Value Function:
 <img width="551" height="112" alt="image" src="https://github.com/user-attachments/assets/22bec211-5f6d-4937-85e4-252a64a6cae3" />
 
 
-
-
 Learned Policy:
-
 
 <img width="522" height="110" alt="image" src="https://github.com/user-attachments/assets/c58a27e3-0e94-4772-928a-e7e979c410ac" />
 
@@ -360,26 +354,17 @@ Average reward over last 1000 episodes:
 
 <img width="561" height="40" alt="image" src="https://github.com/user-attachments/assets/33356e0a-d0e9-4b8e-bd12-93189c5c4204" />
 
-```
+
 <img width="918" height="477" alt="image" src="https://github.com/user-attachments/assets/9d5a9d41-d880-4cce-8d7d-722661249396" />
 
 
----
-
 ## Result
-```text
 
 The SARSA control algorithm was successfully implemented using the Gymnasium FrozenLake-v1 environment. A customized 4×4 environment was used by changing the starting position to state 5 and defining state 15 as the goal. Through repeated interaction with the environment, the agent learned an action-value function and an epsilon-greedy policy for navigating through the environment while avoiding hole states.
 
-```
-
----
 
 ## Inference
-```text
 
 The experiment shows that SARSA can learn a control policy through trial-and-error interaction with the environment. Initially, the agent performs more exploration because epsilon is high. As training progresses, epsilon decreases and the agent increasingly uses the learned Q-values to select actions. The learned policy therefore improves its ability to navigate toward the goal while avoiding the holes in the customized FrozenLake environment.
 
-```
----
 
