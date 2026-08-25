@@ -169,25 +169,26 @@ for episode in range(num_episodes):
 
 Final Q-table:
 
-<img width="656" height="326" alt="image" src="https://github.com/user-attachments/assets/aa3e9872-f6cf-4f16-ad31-0445b127d18d" />
+<img width="692" height="325" alt="image" src="https://github.com/user-attachments/assets/07c7db29-ae5a-44be-a3f2-33e977c94466" />
 
 
 Estimated State-Value Function:
 
-<img width="551" height="112" alt="image" src="https://github.com/user-attachments/assets/22bec211-5f6d-4937-85e4-252a64a6cae3" />
+<img width="621" height="103" alt="image" src="https://github.com/user-attachments/assets/eee4305d-7a3a-4d83-8b39-5454c7564083" />
 
 
 Learned Policy:
 
-<img width="522" height="110" alt="image" src="https://github.com/user-attachments/assets/c58a27e3-0e94-4772-928a-e7e979c410ac" />
+<img width="548" height="105" alt="image" src="https://github.com/user-attachments/assets/c38e7639-c43d-4197-9876-86acb4d7308c" />
+
 
 
 Average reward over last 1000 episodes: 
 
-<img width="561" height="40" alt="image" src="https://github.com/user-attachments/assets/33356e0a-d0e9-4b8e-bd12-93189c5c4204" />
+<img width="716" height="33" alt="image" src="https://github.com/user-attachments/assets/b14667e9-0ae8-4aea-a1a6-37517db493d9" />
 
 
-<img width="918" height="477" alt="image" src="https://github.com/user-attachments/assets/9d5a9d41-d880-4cce-8d7d-722661249396" />
+<img width="866" height="466" alt="image" src="https://github.com/user-attachments/assets/3b305403-9746-4cd8-8bfb-b21aed8f04c1" />
 
 
 ## Result
